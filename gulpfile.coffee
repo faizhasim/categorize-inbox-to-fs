@@ -19,4 +19,4 @@ gulp.task 'test', ->
   (gulp.src 'test/**/*.coffee', read: false)
     .pipe mocha reporter: 'spec'
 
-gulp.task 'default', ['test', 'compile']
+gulp.task 'default', ['compile', 'test']

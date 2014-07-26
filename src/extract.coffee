@@ -1,17 +1,12 @@
-map = require 'vinyl-map'
-vinylFs = require 'vinyl-fs'
-receipt = require './predicate/receipt'
-
-filesort = require './filesort'
-
 glob = require 'glob'
 tika = require 'tika'
-
 gutil = require 'gulp-util'
+Lazy = require 'lazy.js'
 
+documentType = require './predicate/document-type'
+filesort = require './filesort'
 
-
-processFuelReceipt = (filename, matchPattern, receiptDir) ->
+processDocument = (filename, matchPattern, receiptDir) ->
   fileExtensionRegex = /\.[^/.]+$/ # .pdf
   fileNameRegex = /(\w|[ \-.$?=~!@$%^&*()]*)+$/ # this-isa_file$name
 
@@ -32,12 +27,17 @@ module.exports.extract = (src, opts) ->
       return if err
 
       noSpaceContent = text.replace /\s+/g, ''
-      if receipt.shell.matches noSpaceContent
-        processFuelReceipt filename, (receipt.shell.extractPattern noSpaceContent), 'receipts/shell/'
-        gutil.log (gutil.colors.green 'Shell receipt: ') + filename
-      else if receipt.petronas.matches noSpaceContent
-        processFuelReceipt filename, (receipt.petronas.extractPattern noSpaceContent), 'receipts/petronas/'
-        gutil.log (gutil.colors.green 'Petronas receipt: ') + filename
-      else
-        gutil.log (gutil.colors.red 'No match for: ') + filename
+      matchAlreadyFound = false
+      runnable = (docTypeKey) ->
+        return if matchAlreadyFound
+        if documentType[docTypeKey].matches noSpaceContent
+          processDocument filename, (documentType[docTypeKey].extractPattern noSpaceContent), documentType[docTypeKey].targetDir()
+          gutil.log (gutil.colors.green "#{documentType[docTypeKey].documentTypeName()}: ") + filename
+          matchAlreadyFound = true
+
+      (Lazy documentType).keys().each runnable
+
+      gutil.log (gutil.colors.red 'Unknown Document Type: ') + filename unless matchAlreadyFound
+
+
 

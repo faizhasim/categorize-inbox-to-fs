@@ -1,12 +1,10 @@
-receipt = require '../../src/predicate/receipt'
+documentType = require '../../src/predicate/document-type'
 chai = require 'chai'
 expect = chai.expect
 
 itShouldMatch = (value, receiptType = 'shell') ->
-  it "should match given `#{value}`", -> (expect receipt[receiptType].matches value).to.be.ok
-
-itShouldMatch = (value, receiptType = 'shell') ->
-  it "should match given `#{value}`", -> (expect receipt[receiptType].matches value).to.be.ok
+  console.log 'documentType[receiptType].matches value', documentType[receiptType].matches value
+  it "should match given `#{value}`", -> (expect documentType[receiptType].matches value).to.be.ok
 
 describe 'receipt', ->
   describe '#shell', ->
@@ -18,10 +16,11 @@ describe 'receipt', ->
     itShouldMatch 'fuel'
 
     it "should not match given `jkfnliguf liuvdfnbkxfj lorem petronas`", ->
-      (expect receipt.shell.matches 'jkfnliguf liuvdfnbkxfj lorem petronas').to.not.be.ok
+      console.log 'asd', documentType.shell.matches 'jkfnliguf liuvdfnbkxfj lorem petronas'
+      (expect documentType.shell.matches 'jkfnliguf liuvdfnbkxfj lorem petronas').to.not.be.ok
 
   describe '#petronas', ->
     itShouldMatch 'petronas', receiptType='petronas'
 
     it "should not match given `shell bonuslink test dummy`", ->
-      (expect receipt.petronas.matches 'shell bonuslink test dummy').to.not.be.ok
+      (expect documentType.petronas.matches 'shell bonuslink test dummy').to.not.be.ok

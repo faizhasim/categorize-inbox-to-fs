@@ -18,7 +18,7 @@ Running the binary
 Rules customization
 ===================
 
-For `receipt` predicates, checkout `src/predicate/receipt.coffee`.
+You can extend the functionality at `src/predicate/document-type/index.coffee`.
 
 
 Contributing
