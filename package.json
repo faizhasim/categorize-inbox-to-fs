@@ -5,13 +5,12 @@
   "dependencies": {
     "gulp": "~3.8.5",
     "requirejs": "~2.1.14",
-    "vinyl-map": "~1.0.1",
-    "vinyl-fs": "~0.3.4",
     "moment": "~2.7.0",
     "yargs": "~1.2.6",
     "lazy.js": "~0.3.2",
     "tika": "~0.3.0",
-    "glob": "~4.0.4"
+    "glob": "~4.0.4",
+    "vinyl-fs": "~0.3.4"
   },
   "devDependencies": {
     "mocha": "~1.20.1",
@@ -26,10 +25,11 @@
     "chai": "~1.9.1"
   },
   "scripts": {
+    "install": "./node_modules/gulp/bin/gulp.js",
     "test": "mocha"
   },
   "bin": {
-    "run": "bin/sortinbox"
+    "run": "./bin/sortinbox"
   },
   "repository": {
     "type": "git",

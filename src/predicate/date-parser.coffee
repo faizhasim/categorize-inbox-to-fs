@@ -37,3 +37,9 @@ module.exports.matchAny = (value, types...) ->
 
   matchedDate
 
+module.exports.extractPatternFromDateParserFn = (fn, suffix) ->
+  pattern = fn()
+  if pattern
+    return "#{pattern} #{suffix}"
+  else
+    return "~ #{(moment new Date()).format 'YYYY-MM-DD'} #{suffix}"
