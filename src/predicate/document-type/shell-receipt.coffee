@@ -14,7 +14,7 @@ module.exports =
       shellKeyword : -> value.match /sh[e3]ll/gi
 
       #bonuslink
-      bonuslinkKeyword : -> value.match /b[0o][hn]u[s3][li][i1l]nk/gi
+      bonuslinkKeyword : -> value.match /b[0o][hn]u[s3][li][i1l]n[kx]/gi
 
       #fuel
       fuelKeyword : -> value.match /fuel/gi
