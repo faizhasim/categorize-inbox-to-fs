@@ -4,7 +4,7 @@
   "description": "Read contents of files supported by Tika extractor and categorize them into filesystem directories.",
   "dependencies": {
     "gulp": "~3.8.5",
-    "requirejs": "~2.1.14",
+    "requirejs": "~2.3.6",
     "moment": "~2.7.0",
     "yargs": "~1.2.6",
     "lazy.js": "~0.3.2",
