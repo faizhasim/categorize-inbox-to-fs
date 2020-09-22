@@ -5,7 +5,7 @@
   "dependencies": {
     "gulp": "~3.8.5",
     "requirejs": "~2.1.14",
-    "moment": "~2.7.0",
+    "moment": "~2.29.0",
     "yargs": "~1.2.6",
     "lazy.js": "~0.3.2",
     "tika": "~0.3.0",
