@@ -22,7 +22,7 @@
     "gulp-watch": "~0.6.8",
     "gulp-mocha": "~0.4.1",
     "gulp-rename": "~1.2.0",
-    "chai": "~1.9.1"
+    "chai": "~4.3.3"
   },
   "scripts": {
     "install": "./node_modules/gulp/bin/gulp.js",
